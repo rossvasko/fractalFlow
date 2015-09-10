@@ -1,0 +1,341 @@
+\documentclass[journal]{vgtc}                % final (journal style)
+%\documentclass[review,journal]{vgtc}          % review (journal style)
+%\documentclass[widereview]{vgtc}             % wide-spaced review
+%\documentclass[preprint,journal]{vgtc}       % preprint (journal style)
+%\documentclass[electronic,journal]{vgtc}     % electronic version, journal
+\let\ifpdf\relax
+
+%% Uncomment one of the lines above depending on where your paper is
+%% in the conference process. ``review'' and ``widereview'' are for review
+%% submission, ``preprint'' is for pre-publication, and the final version
+%% doesn't use a specific qualifier. Further, ``electronic'' includes
+%% hyperreferences for more convenient online viewing.
+
+%% Please use one of the ``review'' options in combination with the
+%% assigned online id (see below) ONLY if your paper uses a double blind
+%% review process. Some conferences, like IEEE Vis and InfoVis, have NOT
+%% in the past.
+
+%% Please note that the use of figures other than the optional teaser is not permitted on the first page
+%% of the journal version.  Figures should begin on the second page and be
+%% in CMYK or Grey scale format, otherwise, colour shifting may occur
+%% during the printing process.  Papers submitted with figures other than the optional teaser on the
+%% first page will be refused.
+
+%% These three lines bring in essential packages: ``mathptmx'' for Type 1
+%% typefaces, ``graphicx'' for inclusion of EPS figures. and ``times''
+%% for proper handling of the times font family.
+
+% Math-mode symbol & verbatim
+\def\W#1#2{$#1{#2}$ &\tt\string#1\string{#2\string}}
+\def\X#1{$#1$ &\tt\string#1}
+\def\Y#1{$\big#1$ &\tt\string#1}
+\def\Z#1{\tt\string#1}
+
+\usepackage{mathptmx}
+%%\usepackage{psfrag}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{epstopdf}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage[lined,linesnumbered]{algorithm2e}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{framed}
+\usepackage{tikz}
+\usepackage{array}
+
+%% We encourage the use of mathptmx for consistent usage of times font
+%% throughout the proceedings. However, if you encounter conflicts
+%% with other math-related packages, you may want to disable it.
+
+%% This turns references into clickable hyperlinks.
+\usepackage[bookmarks,backref=true,linkcolor=black]{hyperref} %,colorlinks
+\hypersetup{
+  pdfauthor = {},
+  pdftitle = {},
+  pdfsubject = {},
+  pdfkeywords = {},
+  colorlinks=true,
+  linkcolor= black,
+  citecolor= black,
+  pageanchor=true,
+  urlcolor = black,
+  plainpages = false,
+  linktocpage
+}
+
+%% If you are submitting a paper to a conference for review with a double
+%% blind reviewing process, please replace the value ``0'' below with your
+%% OnlineID. Otherwise, you may safely leave it at ``0''.
+\onlineid{0}
+
+%% declare the category of your paper, only shown in review mode
+\vgtccategory{Technique}
+
+%% allow for this line if you want the electronic option to work properly
+\vgtcinsertpkg
+
+%% In preprint mode you may define your own headline.
+%\preprinttext{To appear in an IEEE VGTC sponsored conference.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Math commands
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand {\emath}[1]  {\ensuremath{#1}}
+\newcommand {\R}         {\emath{\mathbb{R}}}        % Real space
+\newcommand {\Real}[1]   {\emath{\mathbb{R}^{#1}}}   % Real space
+\newcommand {\Rd}        {\Real{d}}                  % R^d
+\newcommand {\Rdone}     {\Real{d+1}}                % R^d+1
+\newcommand {\Rk}        {\Real{k}}                  % R^k
+\newcommand {\Rtwo}      {\Real{2}}                  % R^2
+\newcommand {\Rthree}    {\Real{3}}                  % R^3
+\newcommand {\Rfour}     {\Real{4}}                  % R^4
+\newcommand {\Sphere}[1] {\emath{\mathbb{S}^{#1}}}   % Sphere
+\newcommand {\Sk}        {\Sphere{k}}                % S^k
+\newcommand {\Sd}        {\Sphere{d}}                % S^d
+\newcommand {\BB}        {\emath{\mathbb{B}}}        % B
+\newcommand {\Ball}[1]   {\emath{\mathbb{B}^{#1}}}   % B^{#1}
+\newcommand {\Ballep}    {\emath{B^{\epsilon}_{p}}}  % B^e_p
+\newcommand {\cl}        {\emath{\mathrm{cl}}}       % cl
+\newcommand {\cb}        {\emath{\mathbf{c}}}        % bold c
+\newcommand {\eb}        {\emath{\mathbf{c}}}        % bold e
+\newcommand {\tpi}       {\emath{\tilde{\pi}}}       % \pi~
+\newcommand {\gDim}[1]   {\emath{#1 \times #1 \times #1}} % DxDxD
+
+\newcommand {\tg}        {\emath{\tilde{g}}}
+\newcommand {\tn}        {\emath{\tilde{n}}}
+\newcommand {\IV}        {\emath{\mathcal{I_V}}}
+\newcommand {\Orth}      {\emath{\mathcal{O}}}
+\newcommand {\hN}        {\emath{\widehat{N}}}
+\newcommand {\XX}        {\emath{\mathcal{X}}}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}[proposition]
+\newtheorem{lemma}[proposition]{Lemma}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% tikz block styles
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetikzlibrary{shapes,arrows}
+
+\tikzstyle{action} = [rectangle, draw, text centered, node distance=4cm, minimum height=4em]
+\tikzstyle{source} = [draw, ellipse, text centered, node distance=1.5cm, minimum height=4em, text width=3cm]
+\tikzstyle{sink} = [draw, ellipse, text centered, node distance=2cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{figlabel} = [text centered, node distance=1.5cm, text width=1cm]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% algorithm2e keywords and commands
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% algorithm2e global keywords
+\SetKw{Function}{Function}
+\SetKw{true}{true}
+\SetKw{false}{false}
+\SetKw{KwAnd}{and}
+\SetKw{KwOr}{or}
+\SetKw{true}{true}
+\SetKw{false}{false}
+\SetKw{KwElse}{else}
+\SetKw{KwDownTo}{downto}
+\SetKwData{NULL}{NULL}
+\SetKwInOut{Input}{Input}
+\SetKwInOut{Output}{Output}
+\SetKwInOut{Result}{Result}
+\SetKwInOut{Requires}{Requires}
+\ResetInOut{Requires1}
+\SetKwComment{NoLineNum}{}{}
+\SetCommentSty{textit}
+\SetArgSty{textrm}
+\SetFuncSty{textsc}
+\SetAlgoLined
+
+\IncMargin{1ex}
+
+\SetKwFunction{AngleTest}{AngleTest}
+\SetKwFunction{ScalarTest}{ScalarTest}
+\SetKwFunction{ReliableGrad}{ReliableGrad}
+\SetKwFunction{MergeSharp}{MergeSharp}
+\SetKwFunction{FindSharp}{FindSharp}
+\SetKwFunction{CountDegree}{CountDegree}
+\SetKwFunction{SelectiveFindSharp}{SelectiveFindSharp}
+\SetKwFunction{Magnitude}{Magnitude}
+\SetKwFunction{Angle}{Angle}
+\SetKwFunction{Distance}{Distance}
+\SetKwData{Grid}{Grid}
+\SetKwData{numAgree}{numAgree}
+\SetKwData{errorDist}{errorDist}
+\SetKwData{maxErrorDist}{maxErrorDist}
+\SetKwData{numIter}{numIter}
+
+% Algorithm function names and variables
+\SetKwFunction{DoesOrthMatch}{DoesOrthMatch}
+\SetKwFunction{DoesOrthMatchA}{DoesOrthMatchA}
+\SetKwFunction{DoesOrthMatchB}{DoesOrthMatchB}
+\SetKwFunction{ExtendReliable}{ExtendReliable}
+
+
+\SetKwData{Center}{Center}
+\SetKwData{Centroid}{Centroid}
+\SetKwData{isovLoc}{isovLoc}
+\SetKwData{numLargeEigenvalues}{numLargeEigenvalues}
+
+% algorithm2e reset line number
+\newcommand {\ResetAlgoLineNumber} {\setcounter{AlgoLine}{0}}
+
+\SetAlgoCaptionSeparator{.}
+
+
+
+
+\title{Visualizing flow fields using fractal dimensions}
+
+%% This is how authors are specified in the journal style
+
+%% indicate IEEE Member or Student Member in form indicated below
+\author{Ross Vasko, Han-Wei Shen and Rephael Wenger}
+\authorfooter{
+The Ohio State University. E-mail: vasko.38@osu.edu, shen.94@osu.edu
+ and wenger.4@osu.edu}
+
+\abstract{
+Streamlines are a popular way of visualizing flow in vector fields.
+A major challenge in streamline visualization is selecting the streamlines
+for visualization.
+Rendering too many streamlines clutters the visualization and makes
+features of the field difficult to identify. 
+Rending too few streamlines causes viewers to completely miss features
+of the flow field not rendered. 
+
+The fractal dimension of a streamline represents its space-filling properties.
+To identify complex or interesting streamlines, 
+we build a regular grid of scalar values 
+which represent the fractal dimension of streamlines around each grid vertex.
+High fractal dimension indicates vortices or turbulent regions.
+We use this scalar grid both to filter streamlines by fractal dimension
+and to identify and visualize regions containing vortices and turbulence.
+We describe an interactive tool which allows for quick streamline selection
+and visualization of regions containing vortices and turbulence.
+}
+
+%% Keywords that describe your work. Will show as 'Index Terms' in journal
+%% please capitalize first letter and insert punctuation after last keyword
+\keywords{Streamlines, fractal dimension.}
+
+%% ACM Computing Classification System (CCS). 
+%% See <http://www.acm.org/class/1998/> for details.
+%% The ``\CCScat'' command takes four arguments.
+
+\CCScatlist{ % not used in journal version
+\CCScat{I.3.5}{Computer Graphics}{Computational Geometry and Object Modeling}
+}
+
+%% Uncomment below to include a teaser figure.
+%\teaser{
+%}
+
+%% Uncomment below to disable the manuscript note
+%\renewcommand{\manuscriptnotetxt}{}
+
+%% Copyright space is enabled by default as required by guidelines.
+%% It is disabled by the 'review' option or via the following command:
+% \nocopyrightspace
+
+\renewcommand{\textfraction}{0.2}
+\renewcommand{\dbltopfraction}{0.8}	
+\renewcommand{\topfraction}{0.8}	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% START OF THE PAPER %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\firstsection{Introduction}
+
+\maketitle
+
+\section{Related Work}
+
+\section{Box Counting Ratio}
+
+\textbf{Explain definition of fractal dimension?}
+
+\textbf{Explain defintion of box counting dimension?}
+
+\textbf{Show derivation and motivation of box counting formula?}
+
+\section{Streamline Complexity Grid}
+
+For each regular point $p$ in a vector field $f: \Rthree \Rightarrow \Rthree$,
+let $\zeta_p$ be the unique streamline passing through $p$.
+Define $\phi_w(p)$ as the local box counting ratio of $\zeta_p$
+in a $\gDim{w}$ region around $p$,
+where boxes have edge lengths 1 and 2.
+Function $\phi_w$ defines a scalar field on the regular points of $f$.
+The scalar $\phi_w(p)$ represents the complexity of the streamline
+through $p$ in a $\gDim{w}$ neighborhood of $p$.
+We call the scalar field $\phi_w$, the streamline complexity field of $f$.
+
+To construct a scalar grid representing the streamline complexity
+field of $f$,
+we compute a set of streamlines
+so that every voxel is intersected by at least one streamline.
+We then compute the box counting ratio around each voxel $v$,
+by selecting a streamline $\zeta_v$ intersecting the voxel $v$
+and computing the local box counting ratio of $\zeta_v$
+in a $\gDim{w}$ region centered at $v$.
+We call the resulting scalar grid,
+the streamline complexity grid of $f$.
+
+To compute a set of streamlines intersecting every voxel, we...
+
+To compute the local box counting ratio of $\zeta_v$ 
+in a $\gDim{w}$ region centered at $v$, we...
+
+A parameter \textit{w} defines the width of the region around each voxel.
+From each vertex of the scalar grid, a streamline is seeded and a local box counting ratio is calculated from each voxel that the streamline intersects.
+In a local box counting ratio calculation, only a portion of the streamline from some distance to the vertex is considered to exclusively capture and record the behavior of the streamline and flow field around the grid vertices.
+A vertex's final scalar value will be the greatest local box counting ratio computed from that box's vertex.
+Once the scalar grid calculations are complete, visualization techniques using the scalar field and box counting ratios can be applied to the collection of streamlines generated to allow users to identify turbulent regions.
+
+\section{Visualization Techniques}
+
+Using the streamline complexity grid, a variety of different visualization techniques can be applied to allow the user to identify complex or turbulent regions of streamlines.
+Since the scalar values of the grid quanitfy the complexity of the streamlines in that region of the flow field, this provides a simple way to identify the complex streamlines and significant regions of the flow field.
+
+\textbf{Local maximums:} To filter the amount of streamlines shown in the visualization, only the streamline near local maximums of the streamline complexity grid can be shown.
+This allows for the visualization to show links representing different regions of complexity while limiting the amount of streamlines shown to reduce clutter.
+
+\textbf{Colored Plane:} A plane colored by the values on streamline complexity grid can be moved through the field to identify turbulent regions of flow.
+The streamlines can then be shown that have been seeded from these turbulent regions to see the behavior of the flow field in that region.
+
+\textbf{Isosurfaces:} An isosurface, which is defined by
+\begin{equation} \{ x \mid \phi_w(x) = \sigma \}\end{equation}
+ where $\sigma$ is the isovalue and $\phi_w$ is the streamline complexity field.
+This isosurface will enclose the regions of streamlines with a fractal dimension higher than the (sigma) value. 
+At high (sigma) values, the isosurface encloses regions of the field with high complexity.
+
+\textbf{Gradient Magnitudes:} The magnitude of gradients of the streamline complexity field can be computed and stored as another scalar field. The isosurface of the gradient magnitudes constructed at high isovalues identifies regions of the flow field with high change in complexity or isolated regions of turbulence.
+
+\section{Examples}
+
+\section{Evaluation}
+
+\section{Summary and Future Work}
+
+\end{document}
