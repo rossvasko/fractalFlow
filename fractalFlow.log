@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.7)  26 OCT 2015 11:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.7)  4 NOV 2015 11:11
 entering extended mode
-**C:/Users/Ross/Documents/fractalFlow/fractalFlow.tex
-(C:/Users/Ross/Documents/fractalFlow/fractalFlow.tex
+**C:/Users/Ross/Documents/FractalFlow/fractalFlow.tex
+(C:/Users/Ross/Documents/FractalFlow/fractalFlow.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -839,21 +839,21 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 155.
 
-(C:\Users\Ross\Documents\fractalFlow\fractalFlow.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 266.
-LaTeX Font Info:    ... okay on input line 266.
+(C:\Users\Ross\Documents\FractalFlow\fractalFlow.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 268.
+LaTeX Font Info:    ... okay on input line 268.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -874,7 +874,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring ON on input line 266.
+Package hyperref Info: Link coloring ON on input line 268.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -884,12 +884,12 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count144
 )
-LaTeX Info: Redefining \ref on input line 266.
-LaTeX Info: Redefining \pageref on input line 266.
-LaTeX Info: Redefining \nameref on input line 266.
+LaTeX Info: Redefining \ref on input line 268.
+LaTeX Info: Redefining \pageref on input line 268.
+LaTeX Info: Redefining \nameref on input line 268.
 
-(C:\Users\Ross\Documents\fractalFlow\fractalFlow.out)
-(C:\Users\Ross\Documents\fractalFlow\fractalFlow.out)
+(C:\Users\Ross\Documents\FractalFlow\fractalFlow.out)
+(C:\Users\Ross\Documents\FractalFlow\fractalFlow.out)
 \@outlinefile=\write4
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 271.
 
@@ -928,10 +928,10 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 271.
 Package epstopdf Info: Source file: <diamondrule.eps>
-(epstopdf)                    date: 2015-04-08 08:24:43
+(epstopdf)                    date: 2015-04-08 07:24:43
 (epstopdf)                    size: 1682 bytes
 (epstopdf)             Output file: <diamondrule-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-04-08 08:42:47
+(epstopdf)                    date: 2015-04-08 07:42:47
 (epstopdf)                    size: 2586 bytes
 (epstopdf)             Command: <epstopdf --outfile=diamondrule-eps-converted-t
 o.pdf diamondrule.eps>
@@ -945,39 +945,127 @@ File: diamondrule-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: diamondrule-eps-converted-to.pdf used on input line 27
 1.
 (pdftex.def)             Requested size: 213.79822pt x 12.04495pt.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 271.
-LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <9> not available
-(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 271.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 271.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 271.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 272.
+LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <9> not available
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 272.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 279.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 274.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 279.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 274.
+
+Underfull \hbox (badness 1028) in paragraph at lines 297--300
+[]\OT1/ptm/m/n/9 Once we have these com-plex-ity mea-sure-ments of stream-lines
+
+ []
+
+<line.png, id=40, 317.988pt x 317.988pt>
+File: line.png Graphic file (type png)
+ <use line.png>
+Package pdftex.def Info: line.png used on input line 331.
+(pdftex.def)             Requested size: 82.67978pt x 82.68379pt.
+
+<spiral.jpg, id=41, 433.62pt x 433.62pt>
+File: spiral.jpg Graphic file (type jpg)
+ <use spiral.jpg>
+Package pdftex.def Info: spiral.jpg used on input line 335.
+(pdftex.def)             Requested size: 82.67978pt x 82.68379pt.
  [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
- <C:/Users/Ross/Documents/fractalFlow/diamondrule-eps-converted-to.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 353.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 353.
- (C:\Users\Ross\Documents\fractalFlow\fractalFlow.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 353.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 353.
+ <C:/Users/Ross/Documents/FractalFlow/diamondrule-eps-converted-to.pdf>] <all.p
+ng, id=61, 7708.8pt x 4035.075pt>
+File: all.png Graphic file (type png)
+
+<use all.png>
+Package pdftex.def Info: all.png used on input line 389.
+(pdftex.def)             Requested size: 151.15025pt x 79.16458pt.
+
+Overfull \hbox (38.05748pt too wide) in paragraph at lines 389--389
+ [][] 
+ []
+
+<filtered.png, id=62, 7708.8pt x 4035.075pt>
+File: filtered.png Graphic file (type png)
+ <use filtered.png>
+Package pdftex.def Info: filtered.png used on input line 393.
+(pdftex.def)             Requested size: 151.15025pt x 79.16458pt.
+
+Overfull \hbox (38.05748pt too wide) in paragraph at lines 393--393
+ [][] 
+ []
+
+<plane.png, id=64, 7708.8pt x 4035.075pt>
+File: plane.png Graphic file (type png)
+ <use plane.png>
+Package pdftex.def Info: plane.png used on input line 426.
+(pdftex.def)             Requested size: 157.85498pt x 82.68379pt.
+
+Overfull \hbox (39.73476pt too wide) in paragraph at lines 426--426
+ [][] 
+ []
+
+<plane_line.png, id=65, 7708.8pt x 4035.075pt>
+File: plane_line.png Graphic file (type png)
+ <use plane_line.png>
+Package pdftex.def Info: plane_line.png used on input line 430.
+(pdftex.def)             Requested size: 157.85498pt x 82.68379pt.
+
+Overfull \hbox (39.73476pt too wide) in paragraph at lines 430--430
+ [][] 
+ []
+
+[2 <C:/Users/Ross/Documents/FractalFlow/line.png> <C:/Users/Ross/Documents/Frac
+talFlow/spiral.jpg> <C:/Users/Ross/Documents/FractalFlow/all.png (PNG copy)> <C
+:/Users/Ross/Documents/FractalFlow/filtered.png (PNG copy)> <C:/Users/Ross/Docu
+ments/FractalFlow/plane.png (PNG copy)> <C:/Users/Ross/Documents/FractalFlow/pl
+ane_line.png (PNG copy)>] <iso.png, id=76, 9636.0pt x 5043.84375pt>
+File: iso.png Graphic file (type png)
+
+<use iso.png>
+Package pdftex.def Info: iso.png used on input line 456.
+(pdftex.def)             Requested size: 157.91379pt x 82.68379pt.
+
+Overfull \hbox (39.79356pt too wide) in paragraph at lines 456--456
+ [][] 
+ []
+
+<grad.png, id=77, 9636.0pt x 5043.84375pt>
+File: grad.png Graphic file (type png)
+ <use grad.png>
+Package pdftex.def Info: grad.png used on input line 460.
+(pdftex.def)             Requested size: 157.91379pt x 82.68379pt.
+
+Overfull \hbox (39.79356pt too wide) in paragraph at lines 460--460
+ [][] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 472.
+[3
+
+ <C:/Users/Ross/Documents/FractalFlow/iso.png (PNG copy)> <C:/Users/Ross/Docume
+nts/FractalFlow/grad.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 472.
+
+(C:\Users\Ross\Documents\FractalFlow\fractalFlow.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 472.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 472.
 Package rerunfilecheck Info: File `fractalFlow.out' has not changed.
 (rerunfilecheck)             Checksum: 12AA626E2685E872994FEDA3F61A5968;421.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 353.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 472.
  ) 
 Here is how much of TeX's memory you used:
- 21084 strings out of 493921
- 410586 string characters out of 3144880
- 519686 words of memory out of 3000000
- 23970 multiletter control sequences out of 15000+200000
- 49309 words of font info for 105 fonts, out of 3000000 for 9000
+ 21145 strings out of 493921
+ 411358 string characters out of 3144880
+ 522998 words of memory out of 3000000
+ 24010 multiletter control sequences out of 15000+200000
+ 51439 words of font info for 110 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 55i,8n,67p,447b,382s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,67p,447b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fil
@@ -989,9 +1077,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86
 ype1/urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/tim
 es/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.p
 fb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on fractalFlow.pdf (1 page, 107593 bytes).
+Output written on fractalFlow.pdf (3 pages, 12307259 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 12 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 
