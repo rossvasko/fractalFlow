@@ -354,14 +354,14 @@ The geometric characteristics of streamlines are directly representative of the 
 To search for various flow field properties, it is possible to search for streamlines that would have the corresponding geometric characteristics.
 However, the strict defintion of such characteristics is often difficult and can make the search for streamlines too restrictive or misleading.
 We attempt to extract streamline characteristics with a measurement that does not seek specific geometric characteristics.
-Rather, we only attempt to classify the complexity of the streamline by how densely it fills a space using the previously defined \textit{box-counting ratio}.
+Rather, we only attempt to classify the complexity of the streamline by how densely it fills a space using the \textit{box-counting ratio} defined by \cite{khoury}.
 Under the box-counting ratio measurement in 3D, the measurements can range from zero to three.
 The closer to three that a measurement is, the more densely the object fills the 3D space.
 Simple features and regions such as a laminar flow will generate streamlines with a box-counting ratio near one.
 As the flow field displays more turbulent behaviors and generates streamlines that fill a space more densely, the box-counting ratio will increase towards three.
 For streamlines that densely fill some 3D space, such as vortices, the box-counting ratio can increase past two.
 
-With this measurement, we are then able to categorize streamlines based on their complexity without forcing a restrictive definition.
+With this measurement, we are then able to categorize streamlines based on their complexity.
 Such a measurement allows for filtering to remove clutter while still retaining important or defining flow field features.
 Additionally, this measurement allows for not only complexity measurements to be assigned to the streamlines, but complexity measurements can also be assigned to the flow field itself.
 A scalar grid can be constructed with values that are representative of the complexity of the streamlines in some nearby neighborhood.
@@ -447,6 +447,10 @@ These measurements are illustrated in Fig. \ref{fig:box_counting_calcs}
 
 \section{Streamline Complexity Grid} \label{sec:scg}
 
+The streamline complexity grid identified the local complexity of a streamline passing through each grid voxel.
+It is a scalar grid with values reprensentative of the complexity of the flow behavior in a nearby region.
+The streamline complexity grid is constructed in the follow manner.
+
 For each regular point $p$ in a vector field $f: \Rthree \Rightarrow \Rthree$,
 let $\zeta_p$ be the unique streamline passing through $p$.
 Define $\phi_w(p)$ as the local box counting ratio of $\zeta_p$
@@ -460,6 +464,9 @@ To compute the set of streamlines, we first seed a streamline from each voxel $v
 We then calculate the box counting dimensions of each of these streamlines using the previously described box counting dimension algorithm.
 If the streamline intersects more than a predefined cutoff of $c_s$ boxes of edge length $2l$, then the streamline is stored.
 If the streamline does not intersect more than $c_s$ boxes, it is discarded.
+These cutoffs are implemented to prevent inaccuracies in the measurement.
+If the streamline only intersects a few boxes, the box counting dimension receives a very small sample of the streamline to calculate and the measurements can be unstable if the streamline were to shift slightly in the grid.
+Requiring the streamline to intersect a certain number of boxes creates a more stable measurement and is less prone to errors caused by the streamline being placed in different locations of the box counting grid.
 
 To compute the local box counting ratio of $\zeta_v$ in a $\gDim{w}$ region centered at $v$, we take a subset of the streamline, $\zeta_s$, that precisely included in the portion of $\zeta_v$ that is within the $\gDim{w}$ region.
 The box counting dimension of $\zeta_s$ is then computed using the previously described box counting dimension algorithm.
@@ -473,11 +480,17 @@ Once the local box counting dimension of all of the streamlines that intersect $
 Let the streamline whose local box counting dimension was measured as the $P$\textsuperscript{th} percentile local box counting dimension for voxel $v$ be denoted as $v_\zeta$.
 We call the resulting scalar grid, the streamline complexity grid of $f$.
 
+For clarity, a flow chart of a summarized version of the algorithm steps are displayed in Fig. \ref{fig:algorithm_flowchart}.
+
+The scalar grid can be constructed slightly differently for a performance increase.
+Rather than generating a streamline from each voxel, a voxel only generates a streamline if it does not already have a streamline intersecting it.
+Also, as soon as a streamline is found to intersect a voxel, the local fractal dimension of that streamline is assigned to that voxel immediately and that value will not change.
+
 Additionally, a scalar value is associated with each streamline representing the streamline's complexity.
 For a single streamline $\zeta_v$, its local box counting dimension is measured at each voxel that it intersects.
 The highest of these local box counting dimension calculations is stored as the complexity value of $\zeta_v$ .
 
-For clarity, a flow chart of a summarized version of the algorithm steps are displayed in Fig. \ref{fig:algorithm_flowchart}.
+The effects that each of these parameters have on the streamline complexity grid are shown in Section \ref{sec:evaluations}.
 
 \begin{figure}
 \begin{tikzpicture}[node distance = 2cm, auto]
@@ -506,7 +519,7 @@ For clarity, a flow chart of a summarized version of the algorithm steps are dis
 The streamline complexity computations can be used in a variety of ways to filter streamlines of varying complexities or to provide a method of visualization for the flow field.
 
 \subsection{Streamline filtering by value}
-The user is able to choose two values, $a$ and $b$ where $a < b$, and only display streamlines with a complexity inbetween the chosen values. 
+The user is able to choose two values, $a$ and $b$ where $a < b$, and only display streamlines with a complexity between the chosen values. 
 Specifically, the streamline $\zeta_p$ will be displayed only if $a \leq \phi_w(p) \leq b$.
 The constants allow the user to choose the level of streamline complexity that they will view.
 By choosing constants of values near 1, streamlines with a low box counting ratio and smooth flow will be displayed.
@@ -604,7 +617,7 @@ In this section we will demonstrate how the previous described techiques can enh
 The previously decribed algorithms and techniques are applied to two different data sets, a Solar Plume data set and a Hurricane Isabel data set.
 Explanations and figures are given to show the advantages and features given by our algorithms.
 
-The algorithm was implented in C++ using The Visualization Toolkit (VTK) across two seperate programs.
+The algorithm was implented in C++ using The Visualization Toolkit (VTK) across two separate programs.
 The first program has been created to generate streamlines, computer complexity measurements, and compute the streamline complexity grid and then output this information into files.
 Then another program takes the output files as input and allows the user to interact with the streamlines and the streamline complexity grid.
 The second program allows for a real-time interactivity with the flow data set.
@@ -726,70 +739,74 @@ The gradient isosurface has an isosurface near .055 and mainly highlights the re
 The complexity measurements for the streamlines are controlled by many parameters supplied by the user. 
 In this section, we compare the complexity grids generated at different given values.
 The user should be able to slightly change values without having the results be changed drastically.
-It would be an invonnvenience to the user to require an exact set of values to produce reasonable results.
-For this evaluation, we take a single reasonable input, and then slightly modify each value of the input and examine how that changes the scalar grid.
+It would be an inconvenience to the user to require an exact set of values to produce reasonable results.
+For this evaluation, we take reasonable inputs, and then slightly modify each value of the input and examine how that changes the scalar grid.
 
-The original input has a spacing in the vector field of 4, uses a window size of 24, and has cutoff values for the box counting dimensions of 8.
-All of the comparisons will be done off of the scalar grid that was generated from this data set.
-The comparison is performed by taking the points in the original scalar grid and then finding the difference in the corresponding point in the other scalar grid.
-In the tables (Fig. \ref{fig:v_gap}, \ref{fig:cutoff}, and \ref{fig:window_width}) below, we display how the values were changed as well as the mean difference between the scalar grids and the standard deviation of the differences.
+The original inputs are generated from the Solar Plume vector field file $(126 \times 126 \times 512)$.
+The comparison is performed by taking the points in an original scalar grid and then finding the difference in the corresponding point in another other scalar grid.
+In the tables (Fig. \ref{fig:v_gap}, \ref{fig:cutoff}, and \ref{fig:window_width}) below, we display how the mean difference between the scalar grids, the standard deviation of the differences, and the correlation coefficient between the points on the grids.
 
 \begin{figure}[h]
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|l|l|l|}
    \hline
-    Vector space & Mean difference  & Standard deviation\\
+    \parbox[t]{1.5 cm}{Gap size between vectors \vspace{3pt}} & \parbox[t]{1.5 cm}{Mean difference}  & \parbox[t]{1.5 cm}{Standard deviation} & \parbox[t]{1.5 cm}{Correlation coefficient} \\
     \hline
-2&0.0720&0.0668\\
-4&0.0000&0.0000\\
-5&0.0644&0.0612\\
-6&0.0761&0.0653\\
-7&0.0856&0.0708\\
-8&0.0875&0.0735\\
-16&0.1340&0.0957\\
+2&0.0875113&0.078406&0.567032\\
+3&0.0747443&0.0698702&0.656382\\
+4&0.0635828&0.0618563&0.740849\\
+5&0&0&1\\
+6&0.0697747&0.063138&0.695698\\
+7&0.0781319&0.0667513&0.619859\\
+8&0.0812011&0.0700827&0.589734\\
+16&0.132777&0.0951528&0.277545\\
      \hline
 \end{tabular}
-\caption{Comparison of different spaces between the regularly seeded vectors.}
+\caption{Comparison of different spaces between the regularly seeded vectors. The original scalar grid used for comparison uses a vector gap of 5.}
 \label{fig:v_gap}
 \end{figure}
 
 \begin{figure}[h]
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|l|l|l|}
    \hline
-    Cutoff value & Mean difference  & Standard deviation\\
+    \parbox[t]{1.5 cm}{Voxel cutoff values \vspace{3pt}} & \parbox[t]{1.5 cm}{Mean difference}  & \parbox[t]{1.5 cm}{Standard deviation} & \parbox[t]{1.5 cm}{Correlation coefficient} \\
     \hline
-2&0.0943&0.0922\\
-3&0.0953&0.0933\\
-4&0.0920&0.0890\\
-6&0.0835&0.0814\\
-8&0.0000&0.0000\\
-10&0.1181&0.1206\\
-13&0.1553&0.1298\\
-17&0.1790&0.1258\\
+2&0.0563015&0.0569469&0.694716\\
+3&0.0553001&0.0571654&0.706361\\
+4&0.052676&0.0535488&0.718705\\
+5&0.0494708&0.0512391&0.7455\\
+6&0&0&1\\
+7&0.0633587&0.0599131&0.612152\\
+8&0.0834685&0.0814286&0.556235\\
+9&0.0807342&0.0770132&0.493777\\
+10&0.0918514&0.0815184&0.405228\\
+13&0.116194&0.0876069&0.312856\\
+17&0.13871&0.087988&0.332725\\
      \hline
 \end{tabular}
-\caption{Comparison of different cutoff values in the box counting dimension.}
+\caption{Comparison of different cutoff values in the box counting dimension. The original scalar grid used for comparison uses cutoff values of 6.}
 \label{fig:cutoff}
 \end{figure}
 
 \begin{figure}[h]
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|l|l|l|}
    \hline
-    Window width & Mean difference  & Standard deviation\\
+    \parbox[t]{1.5 cm}{Window width \vspace{3pt}} & \parbox[t]{1.5 cm}{Mean difference}  & \parbox[t]{1.5 cm}{Standard deviation} & \parbox[t]{1.5 cm}{Correlation coefficient} \\
     \hline
-16&0.1812&0.1281\\
-24&0.0000&0.0000\\
-28&0.1002&0.0833\\
-32&0.1001&0.0822\\
-36&0.1215&0.0918\\
-40&0.1221&0.0926\\
+16&0.145397&0.111326&0.320522\\
+20&0.106052&0.0834057&0.581703\\
+24&0.100234&0.0833483&0.582926\\
+28&0&0&1\\
+32&0.0333683&0.032174&0.838285\\
+36&0.0519511&0.0438537&0.68827\\
+40&0.0555495&0.0466755&0.636176\\
      \hline
 \end{tabular}
-\caption{Comparison of different window widths used in the box counting dimension.}
+\caption{Comparison of different window widths used in the box counting dimension. The original scalar grid uses a window width of 28.}
 \label{fig:window_width}
 \end{figure}
 
 The tables show that the user has a reasonable window in which parameters can be altered without drastically altering the scalar field values.
-(Not sure what to say about this or if these values are even low enough).
+
 
 \section{Summary and Future Work}
 
